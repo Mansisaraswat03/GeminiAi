@@ -1,7 +1,11 @@
 "use client"
 import React, { useState } from 'react'
-import { Menu,Plus } from 'lucide-react';
-const Sidebar = () => {
+import { Menu,Plus,CircleHelp,
+    Activity,
+    Settings,
+    MessageSquare, } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
+const Sidebar = ({toggle , theme}) => {
     const [open , setOpen] = useState(true);
   return (
     <div className="min-h-[100vh] inline-flex flex-col justify-between bg-bgSecondaryColor py-6 px-4">
@@ -16,8 +20,19 @@ const Sidebar = () => {
        <p className='mt-8'>Recent</p>
       </div>:null}
       </div>
-      <div>
-        
+      <div className='flex flex-col gap-5'>
+      <div className="pr-2.5  cursor-pointer flex gap-2 text-gray-400 items-center">
+          <CircleHelp size={20} className="text-softTextColor" />
+          {open ? <p>Help</p> : null}
+        </div>
+        <div className="pr-2.5  cursor-pointer flex gap-2 text-gray-400 items-center">
+          <Activity size={20} className="text-softTextColor" />
+          {open ? <p>Activity</p> : null}
+        </div>
+        <div className="pr-2.5  cursor-pointer flex gap-2 text-gray-400 items-center">
+          <Settings size={20} className="text-softTextColor" />
+          {open ? <ThemeToggle toggle={toggle} theme={theme}/> : null}
+        </div>
       </div>
     </div>
   )
